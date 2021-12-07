@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CalculatorComponent } from './calculator/calculator.component';
+import {FormControl, FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { CalculatorComponent } from './calculator/calculator.component';
     CalculatorComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

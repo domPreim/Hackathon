@@ -1,0 +1,44 @@
+basis: brutto -> netto monatlich
+wir: + jahrlich, +beitragsgruppe, +bv-beitrag, +pendlerpauschale
+
+kleine pendlerpauschale - ima offentliche verkehrsmittel
+20 - 40: 58
+40 - 60: 113
+60 - 00: 168
+grosse pendlerpauschale - nema offentliche verkehrsmittel
+02 - 20: 31
+20 - 40: 123
+40 - 60: 214
+60 - 00: 306
+
+deca ispod 18: (oduzima se od LSt) ovo je za ljude koji imaju FAMILIEN BONUS PLUS
+125 mesecno
+deca iznad 18:
+41,68
+
+
+basis:		SVAvgabe	Urlaub
+000 - 475.86: 	0		0
+475.81 - 1790:	15.12		14.12
+1790 - 1953:	16.12		15.12
+1953 - 2117:	17.12		16.12
+2117 - 5550:	18.12		17.12
+5550 - 0000:	1005.66 pm	1900.32 bm
+
+lohnsteuer:
+0 - 11 000:		0
+11 000 - 18 000:	20
+18 000 - 31 000: 	35
+31 000 - 60 000: 	42
+60 000 - 90 000:	48
+90 000 - 1 000 000:	50
+1 000 000 - 00000:	55
+
+lohnsteuer: za urlaub
+0 - 620:	0
+620 - 25000:	6
+25000 - 50000:	27
+50000 - 83333:	35.75
+83333 - 00000:	50
+
+formula: brutto - ((brutto*lohnsteuer)+brutto*sv) //if brutto > 5550 then 1005.66

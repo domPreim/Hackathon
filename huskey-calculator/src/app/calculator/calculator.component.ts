@@ -8,7 +8,7 @@ import {FormControl, NgForm} from "@angular/forms";
 })
 export class CalculatorComponent implements OnInit {
 
-  var lohnsteuerInfo: Array<number>;
+  /* lohnsteuerInfo: Array<number>;
   lohnsteuerInfo = [11000,18000, 31000, 60000, 90000, 1000000];//has to be double array, to check for vacation as well
 
 
@@ -78,9 +78,9 @@ export class CalculatorComponent implements OnInit {
       }
     }
 
-    return brutto * lohnsteuer;*/
+    return brutto * lohnsteuer;
   }
-
+*/
   constructor() { }
 
   ngOnInit(): void {

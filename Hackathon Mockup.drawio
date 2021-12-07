@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-12-06T12:55:21.949Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36" etag="gMIvwUKgHO4iaOeo_SH0" version="15.0.6" type="github" pages="4">
+<mxfile host="app.diagrams.net" modified="2021-12-07T09:52:57.989Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36" etag="Z4oPnSW5Yv5c_onSiz0x" version="15.9.1" type="github" pages="6">
   <diagram id="5CCCoDuPq-2c7cyhoLma" name="Main">
     <mxGraphModel dx="1038" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -7,21 +7,15 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="wEaYkLGl4pUUAinCCvIh" name="Player 1">
+  <diagram id="wEaYkLGl4pUUAinCCvIh" name="Kristijan">
     <mxGraphModel dx="1038" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="pgHqKav0Ja8G54CpKUhC-0" />
         <mxCell id="pgHqKav0Ja8G54CpKUhC-1" parent="pgHqKav0Ja8G54CpKUhC-0" />
-        <mxCell id="kYsWq0GW7RuJ2dnlys4y-0" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="pgHqKav0Ja8G54CpKUhC-1">
-          <mxGeometry x="370" y="260" width="80" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="kYsWq0GW7RuJ2dnlys4y-1" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="pgHqKav0Ja8G54CpKUhC-1">
-          <mxGeometry x="340" y="160" width="30" height="60" as="geometry" />
-        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="V3om6HGLGxuMnWEhqBAh" name="Player 2">
+  <diagram id="V3om6HGLGxuMnWEhqBAh" name="Lukas">
     <mxGraphModel dx="1038" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="RevyRoGrONGqSV75I9Za-0" />
@@ -29,11 +23,27 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="JDxsZxcpLfrRRwyLYfKF" name="Player 3">
+  <diagram id="JDxsZxcpLfrRRwyLYfKF" name="Azra">
     <mxGraphModel dx="1038" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="kWSe5bUWFkzQhJVTQGT8-0" />
         <mxCell id="kWSe5bUWFkzQhJVTQGT8-1" parent="kWSe5bUWFkzQhJVTQGT8-0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="IXdF1Et2BsXvcPsLIVIb" name="Aleksander">
+    <mxGraphModel dx="1038" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="_qAMzFIA3sKf-P277fXm-0" />
+        <mxCell id="_qAMzFIA3sKf-P277fXm-1" parent="_qAMzFIA3sKf-P277fXm-0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="-j0CE15BkSOlGOnqK3SK" name="Dominik">
+    <mxGraphModel dx="1038" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="_gVlkK7FjK0nM1cHHxRu-0" />
+        <mxCell id="_gVlkK7FjK0nM1cHHxRu-1" parent="_gVlkK7FjK0nM1cHHxRu-0" />
       </root>
     </mxGraphModel>
   </diagram>

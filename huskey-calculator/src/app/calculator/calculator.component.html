@@ -1,1 +1,120 @@
-<p>calculator works!</p>
+<div class="container mt-4">
+  <div class="row">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="input-income">Einkommen</span>
+        </div>
+        <input type="number" min="0" class="form-control" aria-label="Sizing example input" aria-describedby="input-income">
+        <div class="input-group-append">
+          <div class="input-group-text"> .00 €</div>
+        </div>
+        <select class="form-select" aria-label="Select fee group">
+          <option selected value="1">monatlich</option>
+          <option value="2">jährlich</option>
+        </select>
+    </div>
+
+  </div>
+
+  <!-- <div class="row">
+    <div class="col-md-6">Beitragsgruppe</div>
+    <div class="col-md-6">
+      <div class="input-group mb-3">
+        <select class="form-select" aria-label="Select fee group">
+          <option selected>AngestellterIn</option>
+          <option value="1">ArbeiterIn</option>
+          <option value="2">PensionistIn</option>
+        </select>
+        <input class="form-check-input mt-auto mb-auto m-2" type="checkbox" value="" id="box-bv">
+        <label class="form-check-label mt-auto mb-auto" for="box-bv">
+          BV-Beitrag
+        </label>
+      </div>
+    </div>
+  </div>
+  -->
+  <div class="row">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="selector-state">Bundesland</span>
+      </div>
+      <select class="form-select" aria-label="Select fee group">
+        <option value="1">Burgenland</option>
+        <option value="2">Kärnten</option>
+        <option value="3">Niederösterreich</option>
+        <option value="4">Oberösterreich</option>
+        <option value="5">Salzburg</option>
+        <option value="6">Steiermark</option>
+        <option value="7">Tirol</option>
+        <option value="8">Voralberg</option>
+        <option value="9">Wien</option>
+        <option selected>Kein DZ</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Pendlerpauschale</span>
+        </div>
+        <select class="form-select" aria-label="Select fee group">
+          <option value="1">20-40km (klein)</option>
+          <option value="2">40-60km (klein)</option>
+          <option value="3">ab 60km (klein)</option>
+          <option value="4">2-20km (groß)</option>
+          <option value="5">20-40km (groß)</option>
+          <option value="6">40-60km (groß)</option>
+          <option value="7">ab 60km (groß)</option>
+        </select>
+    </div>
+  </div>
+
+  <div class="container">
+    <button class="btn btn-outline-primary" id="calc-button">Berechnen</button>
+  </div>
+</div>
+
+<div class="container">
+  <table class="table table-striped">
+<thead>
+<tr>
+  <th scope="col"></th>
+  <th scope="col">Monatlich</th>
+  <th scope="col">13.Bezug</th>
+  <th scope="col">14.Bezug</th>
+  <th scope="col">Jährlich</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <th>Brutto</th>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <th>SV</th>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <th>Lst</th>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <th>Netto</th>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+  </table>
+</div>

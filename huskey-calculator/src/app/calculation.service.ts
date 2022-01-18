@@ -80,7 +80,7 @@ export class CalculationService {
     return monatlich ? kidsu18*125+kids18*41.68 : kidsu18*1500 + kids18*500.16;
   }
 
-  lohnsteuer(brutto: number,urlaub: number,kidsu18: number,kids18: number, monatlich: boolean, km: number = 0,isSmall: number = 0)
+  lohnsteuer(brutto: number,urlaub: number,kidsu18: number,kids18: number, monatlich: boolean)
   {
     var position =  0;
     for(var i = 0; i < this.lohnsteuerInfo[urlaub].length;i++)
@@ -96,7 +96,7 @@ export class CalculationService {
       }
     }
 
-    return this.lohnsteuerBerechnen(brutto,urlaub,position,monatlich) - this.familienBonus(kidsu18,kids18,monatlich) - this.pendler(km,isSmall);
+    return this.lohnsteuerBerechnen(brutto,urlaub,position,monatlich) - this.familienBonus(kidsu18,kids18,monatlich);
   }
 
 

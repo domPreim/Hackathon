@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { url } from 'inspector';
 
 @Injectable({
   providedIn: 'root'
@@ -91,6 +92,33 @@ export class CalculationService {
       }
     }
 
-    return monatlich ? brutto / 14 * this.lohnsteuerProzent[urlaub][position] - this.familienBonus(kidsu18,kids18,monatlich) : brutto * this.lohnsteuerProzent[urlaub][position] - this.familienBonus(kidsu18,kids18);
+    return monatlich ? brutto / 14 * this.lohnsteuerProzent[urlaub][position] - this.familienBonus(kidsu18,kids18,monatlich) : brutto * this.lohnsteuerProzent[urlaub][position] - this.familienBonus(kidsu18,kids18,monatlich);
+  }
+
+
+  lohnsteuerBerechnen(brutto:number,urlaub:number,position: number,monatlich: boolean)
+  {
+    let summe = 0;
+    let tempBrutto = brutto;
+    for(let i = 0; i < position;i++)
+    {
+      if(monatlich)
+      {
+        summe += (this.lohnsteuerInfo[urlaub][i]/14) * this.lohnsteuerProzent[urlaub][i];
+      }
+      else
+      {
+        summe += this.lohnsteuerInfo[urlaub][i] * this.lohnsteuerProzent[urlaub][i];
+      }
+    }
+
+    if(monatlich)
+    {
+      summe += (brutto/14-summe) * this.lohnsteuerProzent[urlaub][position];
+    }
+    else
+    {
+      summe += (brutto-summe) * this.lohnsteuerProzent[urlaub][position];
+    }
   }
 }

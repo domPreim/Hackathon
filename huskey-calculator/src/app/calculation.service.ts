@@ -9,9 +9,9 @@ export class CalculationService {
 
   //first array is always for non vacation procents. Second one is for the vacation procents
   lohnsteuerInfo = [[11000,18000, 31000, 60000, 90000, 1000000],[620,25000,50000,83333]];
-  lohnsteuerProzent = [[0,20,35,42,48,50,55],[0,6,27,35.75,50]];
+  lohnsteuerProzent = [[0,0.20,0.35,0.42,0.48,0.50,0.55],[0,0.6,0.27,0.3575,0.50]];
   svInfo = [6662.04,25060,27342,29638,77700];
-  svSteuerProzent = [[0,15.12,16.12,17.12,18.12,1005.66],[0,14.12,15.12,16.12,17.12,1900.32]];
+  svSteuerProzent = [[0,0.1512,0.1612,0.1712,0.1812,1005.66],[0,0.1412,0.1512,0.1612,0.1712,1900.32]];
 
   //first small pendler then big pendler
   pendlerPauschaleInfo = [20,40,60];
@@ -77,11 +77,18 @@ export class CalculationService {
 
   lohnsteuer(brutto: number,urlaub: number,kidsu18: number,kids18: number, monatlich: boolean)
   {
+
+    /*console.log("Brutto " + brutto);
+    console.log("Urlaub "+urlaub);
+    console.log("Monatlich: " +monatlich);*/
     var position =  0;
     for(var i = 0; i < this.lohnsteuerInfo[urlaub].length;i++)
     {
+      /*console.log("I: " + i);
+      console.log("LohnsteuerInfo: " + this.lohnsteuerInfo[urlaub][i]);*/
       if(brutto < this.lohnsteuerInfo[urlaub][i])
       {
+        //console.log("Position: " + position);
         position = i;
         break;
       }
@@ -91,25 +98,30 @@ export class CalculationService {
       }
     }
 
-    return monatlich ? brutto / 14 * this.lohnsteuerProzent[urlaub][position] - this.familienBonus(kidsu18,kids18,monatlich) : brutto * this.lohnsteuerProzent[urlaub][position] - this.familienBonus(kidsu18,kids18,monatlich);
+    return this.lohnsteuerBerechnen(brutto,urlaub,position,monatlich) - this.familienBonus(kidsu18,kids18,monatlich);
   }
 
 
   lohnsteuerBerechnen(brutto:number,urlaub:number,position: number,monatlich: boolean)
   {
     let summe = 0;
-    let tempBrutto = brutto;
+    let temp = 0;
     for(let i = 0; i < position;i++)
     {
       if(monatlich)
       {
-        summe += (this.lohnsteuerInfo[urlaub][i]/14) * this.lohnsteuerProzent[urlaub][i];
+        summe += ((this.lohnsteuerInfo[urlaub][i]/14)-temp) * this.lohnsteuerProzent[urlaub][i];
+        temp = this.lohnsteuerInfo[urlaub][i]/14;
       }
       else
       {
-        summe += this.lohnsteuerInfo[urlaub][i] * this.lohnsteuerProzent[urlaub][i];
+        summe += (this.lohnsteuerInfo[urlaub][i]-temp) * this.lohnsteuerProzent[urlaub][i];
+        temp = this.lohnsteuerInfo[urlaub][i];
       }
+      
     }
+
+    console.log("Summe AFTER: " + summe);
 
     if(monatlich)
     {
@@ -117,7 +129,9 @@ export class CalculationService {
     }
     else
     {
-      summe += (brutto-summe) * this.lohnsteuerProzent[urlaub][position];
+      summe += (brutto-temp) * this.lohnsteuerProzent[urlaub][position];
     }
+
+    return summe;
   }
 }

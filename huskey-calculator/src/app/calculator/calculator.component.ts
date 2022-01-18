@@ -35,24 +35,27 @@ export class CalculatorComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    //console.log(this.form.value);
 
 
     // calc
     let brutto = this.form.get('salary')?.value;
+    
     let bruttoMonth;
     if (this.form.get('isMonth')) {
+      bruttoMonth = brutto / 14;
+    } else {
+
       bruttoMonth = brutto;
       brutto *= 14;
-    } else {
-      bruttoMonth = brutto / 14;
     }
+    
     let netto = this.service.netto(brutto, 0, this.form.get('children')?.value, this.form.get('children18')?.value, this.form.get('isMonth')?.value);
     let nettoUrlaub = this.service.netto(brutto, 1,this.form.get('children')?.value, this.form.get('children18')?.value, this.form.get('isMonth')?.value);
     let sv = this.service.sv(brutto, 0, this.form.get('isMonth')?.value);
     let svUrlaub = this.service.sv(brutto.value, 1, this.form.get('isMonth')?.value);
     let lst = this.service.lohnsteuer(brutto, 0, this.form.get('children')?.value, this.form.get('children18')?.value, this.form.get('isMonth')?.value);
-    console.log('sv:', sv, 'svUrlaub:', svUrlaub, 'lst:', lst);
+    //console.log('sv:', sv, 'svUrlaub:', svUrlaub, 'lst:', lst);
 
     // set table
     this.tableArray[0][0] = bruttoMonth;

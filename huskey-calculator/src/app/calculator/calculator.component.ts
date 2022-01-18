@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, NgForm} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-calculator',
@@ -7,7 +7,22 @@ import {FormControl, NgForm} from "@angular/forms";
   styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent implements OnInit {
+  form: FormGroup;
 
+  private initForm(): FormGroup {
+    return this.fb.group(
+      {
+        salary: [0, [Validators.required, Validators.min(0)]],
+        isMonth: [true, Validators.required],
+        state: [0],
+        commuterTax: [0]
+      }
+    );
+  }
+
+  checkError(errors: string, name: string) : boolean {
+    return !!this.form.get(name)?.errors?.[errors];
+  }
   /* lohnsteuerInfo: Array<number>;
   lohnsteuerInfo = [11000,18000, 31000, 60000, 90000, 1000000];//has to be double array, to check for vacation as well
 
@@ -81,12 +96,15 @@ export class CalculatorComponent implements OnInit {
     return brutto * lohnsteuer;
   }
 */
-  constructor() { }
+  constructor(private fb:FormBuilder) {
+    this.form = this.initForm();
+  }
 
   ngOnInit(): void {
   }
 
-  onSubmit(f: NgForm) {
-    console.log(f.value);
+  onSubmit() {
+    console.log(this.form.value)
+    console.log(this.form.get('salary')?.errors)
   }
 }

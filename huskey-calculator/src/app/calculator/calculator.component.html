@@ -1,22 +1,27 @@
 <div class="container mt-4">
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
     <div class="row">
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="input-income">Einkommen</span>
         </div>
-        <input name="salary" ngModel type="number" min="0" class="form-control" aria-label="Sizing example input"
+        <input formControlName="salary" name="salary" type="number" min="0" class="form-control" aria-label="Sizing example input"
                aria-describedby="input-income">
-
         <div class="input-group-append">
           <div class="input-group-text"> .00 €</div>
         </div>
-        <select name="isMonth" ngModel class="form-select" aria-label="Select fee group">
+        <select formControlName="isMonth" name="isMonth"  class="form-select" aria-label="Select fee group">
           <option selected [ngValue]="true">monatlich</option>
           <option [ngValue]="false">jährlich</option>
         </select>
       </div>
 
+      <div *ngIf="checkError('min', 'salary') && form.get('salary')?.touched" class="alert alert-danger">
+        Negative numbers not allowed!
+      </div>
+      <div *ngIf="checkError('required', 'salary') && form.get('salary')?.touched" class="alert alert-danger">
+        Salary required!
+      </div>
     </div>
 
     <!-- <div class="row">
@@ -41,7 +46,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="selector-state">Bundesland</span>
         </div>
-        <select name="state" ngModel class="form-select" aria-label="Select fee group">
+        <select formControlName="state" name="state"  class="form-select" aria-label="Select fee group">
           <option selected value="0">Wien</option>
           <option value="1">Burgenland</option>
           <option value="2">Kärnten</option>
@@ -60,8 +65,8 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Pendlerpauschale</span>
         </div>
-        <select name="commuterTax" ngModel class="form-select" aria-label="Select fee group">
-          <option value="0">Keine</option>
+        <select formControlName="commuterTax" name="commuterTax"  class="form-select" aria-label="Select fee group">
+          <option selected value="0">Keine</option>
           <option value="1">20-40km (klein)</option>
           <option value="2">40-60km (klein)</option>
           <option value="3">ab 60km (klein)</option>

@@ -119,7 +119,7 @@ export class CalculationService {
         summe += (this.lohnsteuerInfo[urlaub][i]-temp) * this.lohnsteuerProzent[urlaub][i];
         temp = this.lohnsteuerInfo[urlaub][i];
       }
-      
+
     }
 
     console.log("Summe AFTER: " + summe);

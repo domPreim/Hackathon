@@ -15,8 +15,9 @@ export class CalculatorComponent implements OnInit {
     return this.fb.group(
       {
         salary: [0, [Validators.required, Validators.min(0)]],
+        children: [0, [Validators.required, Validators.min(0)]],
+        children18: [0, [Validators.required, Validators.min(0)]],
         isMonth: [true, Validators.required],
-        state: [0],
         commuterTax: [0]
       }
     );

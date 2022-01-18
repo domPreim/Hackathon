@@ -35,38 +35,41 @@ export class CalculatorComponent implements OnInit {
   }
 
   onSubmit() {
-    //console.log(this.form.value);
+    console.log(this.form.value);
 
 
     // calc
-    let brutto = this.form.get('salary')?.value;
-    
+    let bruttoYear;
     let bruttoMonth;
     if (this.form.get('isMonth')) {
-      bruttoMonth = brutto / 14;
+      bruttoMonth = this.form.get('salary')?.value;
+      bruttoYear = bruttoMonth * 14;
     } else {
-
-      bruttoMonth = brutto;
-      brutto *= 14;
+      bruttoYear = this.form.get('salary')?.value;
+      bruttoMonth = bruttoYear / 14;
     }
-    
-    let netto = this.service.netto(brutto, 0, this.form.get('children')?.value, this.form.get('children18')?.value, this.form.get('isMonth')?.value);
-    let nettoUrlaub = this.service.netto(brutto, 1,this.form.get('children')?.value, this.form.get('children18')?.value, this.form.get('isMonth')?.value);
-    let sv = this.service.sv(brutto, 0, this.form.get('isMonth')?.value);
-    let svUrlaub = this.service.sv(brutto.value, 1, this.form.get('isMonth')?.value);
-    let lst = this.service.lohnsteuer(brutto, 0, this.form.get('children')?.value, this.form.get('children18')?.value, this.form.get('isMonth')?.value);
-    //console.log('sv:', sv, 'svUrlaub:', svUrlaub, 'lst:', lst);
+    let netto = this.service.netto(bruttoYear, 0, this.form.get('children')?.value, this.form.get('children18')?.value, this.form.get('isMonth')?.value);
+    let nettoUrlaub = this.service.netto(bruttoYear, 1,this.form.get('children')?.value, this.form.get('children18')?.value, this.form.get('isMonth')?.value);
+    let sv = this.service.sv(bruttoYear, 0, this.form.get('isMonth')?.value);
+    let svUrlaub = this.service.sv(bruttoYear.value, 1, this.form.get('isMonth')?.value);
+    let lst = this.service.lohnsteuer(bruttoYear, 0, this.form.get('children')?.value, this.form.get('children18')?.value, this.form.get('isMonth')?.value);
+    console.log('sv:', sv, 'svUrlaub:', svUrlaub, 'lst:', lst, 'brutto:', bruttoYear);
 
     // set table
     this.tableArray[0][0] = bruttoMonth;
     this.tableArray[0][1] = bruttoMonth;
     this.tableArray[0][2] = bruttoMonth;
-    this.tableArray[0][3] = brutto * 14;
+    this.tableArray[0][3] = bruttoYear;
 
     this.tableArray[1][0] = sv;
     this.tableArray[1][1] = svUrlaub;
     this.tableArray[1][2] = svUrlaub;
     this.tableArray[1][3] = sv * 12 + svUrlaub * 2;
+
+    this.tableArray[2][0] = lst;
+    this.tableArray[2][1] = svUrlaub;
+    this.tableArray[2][2] = svUrlaub;
+    this.tableArray[2][3] = sv * 12 + svUrlaub * 2;
 
     this.tableArray[3][0] = netto;
     this.tableArray[3][1] = nettoUrlaub;

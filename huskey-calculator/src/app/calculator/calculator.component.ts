@@ -48,6 +48,8 @@ export class CalculatorComponent implements OnInit {
       bruttoYear = this.form.get('salary')?.value;
       bruttoMonth = bruttoYear / 14;
     }
+    console.log("BRUTTO YEAR: " + bruttoYear);
+    console.log("BRUTTO MONTH: " + bruttoMonth);
     let netto = this.service.netto(bruttoYear, 0, this.form.get('children')?.value, this.form.get('children18')?.value, this.form.get('isMonth')?.value);
     let nettoUrlaub = this.service.netto(bruttoYear, 1,this.form.get('children')?.value, this.form.get('children18')?.value, this.form.get('isMonth')?.value);
     let sv = this.service.sv(bruttoYear, 0, this.form.get('isMonth')?.value);

@@ -16,7 +16,7 @@ export class CalculationService {
 
   //first small pendler then big pendler
   pendlerPauschaleInfo = [20,40,60];
-  pendlerPauschale = [[0,58,113,168],[31,123,214,306]];
+  pendlerPauschale = [[0,696,1356,2016],[372,1476,2568,3672]];
 
   pendler(km: number,isSmall: number)
   {

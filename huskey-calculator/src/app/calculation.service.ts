@@ -39,7 +39,8 @@ export class CalculationService {
   //returns NET salary.
   netto(brutto: number,urlaub: number,kidsu18:number,kids18: number,monatlich: boolean)
   {
-    return monatlich ? (brutto/14) - (this.lohnsteuer(brutto,urlaub,kidsu18,kids18,monatlich)+this.sv(brutto,urlaub,monatlich)) :  brutto - (this.lohnsteuer(brutto,urlaub,kidsu18,kids18,monatlich)+this.sv(brutto,urlaub,monatlich));
+    return monatlich ? (brutto/14) - (this.lohnsteuer(brutto,urlaub,kidsu18,kids18,monatlich)+this.sv(brutto,urlaub,monatlich)) 
+    :  brutto - (this.lohnsteuer(brutto,urlaub,kidsu18,kids18,monatlich)+this.sv(brutto,urlaub,monatlich));
   }
 
   sv(brutto: number,urlaub: number,monatlich: boolean)
@@ -125,7 +126,7 @@ export class CalculationService {
 
     if(monatlich)
     {
-      summe += (brutto/14-summe) * this.lohnsteuerProzent[urlaub][position];
+      summe += (brutto/14-temp) * this.lohnsteuerProzent[urlaub][position];
     }
     else
     {

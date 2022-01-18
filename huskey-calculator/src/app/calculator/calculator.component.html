@@ -98,31 +98,19 @@
       <tbody>
       <tr>
         <th>Brutto</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td *ngFor="let data of tableArray[0]">{{data}}</td>
       </tr>
       <tr>
         <th>SV</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td *ngFor="let data of tableArray[1]">{{data}}</td>
       </tr>
       <tr>
         <th>Lst</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td *ngFor="let data of tableArray[2]">{{data}}</td>
       </tr>
       <tr>
         <th>Netto</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td *ngFor="let data of tableArray[3]">{{data}}</td>
       </tr>
       </tbody>
     </table>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {CalculationService} from "../calculation.service";
 
 @Component({
   selector: 'app-calculator',
@@ -8,6 +9,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class CalculatorComponent implements OnInit {
   form: FormGroup;
+  tableArray:number[][] = [[1, 2, 3, 4], [5, 6, 7, 8], [1, 2, 3, 4], [5, 6, 7, 8]];
 
   private initForm(): FormGroup {
     return this.fb.group(
@@ -23,80 +25,8 @@ export class CalculatorComponent implements OnInit {
   checkError(errors: string, name: string) : boolean {
     return !!this.form.get(name)?.errors?.[errors];
   }
-  /* lohnsteuerInfo: Array<number>;
-  lohnsteuerInfo = [11000,18000, 31000, 60000, 90000, 1000000];//has to be double array, to check for vacation as well
 
-
-  function lohnsteuer(brutto,urlaub)
-  {
-    var position =  0;
-    for(var i = 0; i < lohnsteuerInfo;i++)
-    {
-      if(brutto < lohnsteuerInfo[i])
-      {
-        position = i;
-        break;
-      }
-      else if(i == lohnsteuerInfo.lenght-1)
-      {
-        position = i+1;
-      }
-    }
-
-    return brutto * lohnsteuerProzent[urlaub][position];
-
-    /*var lohnsteuer = 0;
-    if(urlaub)
-    {
-      if(brutto > 650 && brutto < 25000)
-      {
-        lohnsteuer = 0.06;
-      }
-      else if(brutto > 25000 && brutto < 50000)
-      {
-        lohnsteuer = 0.27;
-      }
-      else if(brutto > 50000 && brutto < 83333)
-      {
-        lohnsteuer = 0.3575;
-      }
-      else if(brutto > 83333)
-      {
-        lohnsteuer = 0.5;
-      }
-    }
-    else
-    {
-      if(brutto > 11000 && brutto < 18000)
-      {
-        lohnsteuer = 0.2;
-      }
-      else if(brutto > 18000 && brutto < 31000)
-      {
-        lohnsteuer = 0.35;
-      }
-      else if(brutto > 31000 && brutto < 60000)
-      {
-        lohnsteuer = 0.42;
-      }
-      else if(brutto > 60000 && brutto < 90000)
-      {
-        lohnsteuer = 0.48;
-      }
-      else if(brutto > 90000 && brutto < 1000000)
-      {
-        lohnsteuer = 0.5;
-      }
-      else if(brutto > 1000000)
-      {
-        lohnsteuer = 0.55;
-      }
-    }
-
-    return brutto * lohnsteuer;
-  }
-*/
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder, private service: CalculationService) {
     this.form = this.initForm();
   }
 
@@ -104,7 +34,35 @@ export class CalculatorComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value)
-    console.log(this.form.get('salary')?.errors)
+    console.log(this.form.value);
+
+
+    // calc
+    let brutto = this.form.get('salary')?.value;
+    if (this.form.get('isMonth')) {
+      brutto *= 14;
+    }
+    let netto = this.service.netto(brutto, this.form.get('isMonth')?.value);
+    let nettoUrlaub = this.service.netto(brutto, this.form.get('isMonth')?.value, 1);
+    let sv = this.service.sv(brutto, this.form.get('isMonth')?.value);
+    let svUrlaub = this.service.sv(brutto.value, this.form.get('isMonth')?.value, 1);
+    let lst = this.service.lohnsteuer(brutto, this.form.get('isMonth')?.value);
+    console.log('sv:', sv, 'svUrlaub:', svUrlaub, 'lst:', lst);
+
+    // set table
+    this.tableArray[0][0] = brutto;
+    this.tableArray[0][1] = brutto;
+    this.tableArray[0][2] = brutto;
+    this.tableArray[0][3] = brutto * 14;
+
+    this.tableArray[1][0] = sv;
+    this.tableArray[1][1] = svUrlaub;
+    this.tableArray[1][2] = svUrlaub;
+    this.tableArray[1][3] = sv * 12 + svUrlaub * 2;
+
+    this.tableArray[3][0] = netto;
+    this.tableArray[3][1] = nettoUrlaub;
+    this.tableArray[3][2] = netto;
+    this.tableArray[3][3] = netto;
   }
 }

@@ -42,3 +42,6 @@ lohnsteuer: za urlaub
 83333 - 00000:	50
 
 formula: brutto - ((brutto*lohnsteuer)+brutto*sv) //if brutto > 5550 then 1005.66
+
+
+DELI SE SA 14 ZA MESECNO!!!!!!!!!!!!!!!!!!!!!!!!!!!

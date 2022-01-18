@@ -45,10 +45,14 @@ export class CalculationService {
 
   sv(brutto: number,urlaub: number,monatlich: boolean)
   {
+    
     var position =  0;
     var isPauschal = false;
     for(var i = 0; i < this.svInfo.length;i++)
     {
+      console.log("Brutto: " +brutto);
+      console.log("I: " + i);
+      console.log("SVINFO: " + this.svInfo[i]);
       if(brutto < this.svInfo[i])
       {
         position = i;
@@ -76,20 +80,13 @@ export class CalculationService {
     return monatlich ? kidsu18*125+kids18*41.68 : kidsu18*1500 + kids18*500.16;
   }
 
-  lohnsteuer(brutto: number,urlaub: number,kidsu18: number,kids18: number, monatlich: boolean)
+  lohnsteuer(brutto: number,urlaub: number,kidsu18: number,kids18: number, monatlich: boolean, km: number = 0,isSmall: number = 0)
   {
-
-    /*console.log("Brutto " + brutto);
-    console.log("Urlaub "+urlaub);
-    console.log("Monatlich: " +monatlich);*/
     var position =  0;
     for(var i = 0; i < this.lohnsteuerInfo[urlaub].length;i++)
     {
-      /*console.log("I: " + i);
-      console.log("LohnsteuerInfo: " + this.lohnsteuerInfo[urlaub][i]);*/
       if(brutto < this.lohnsteuerInfo[urlaub][i])
       {
-        //console.log("Position: " + position);
         position = i;
         break;
       }
@@ -99,7 +96,7 @@ export class CalculationService {
       }
     }
 
-    return this.lohnsteuerBerechnen(brutto,urlaub,position,monatlich) - this.familienBonus(kidsu18,kids18,monatlich);
+    return this.lohnsteuerBerechnen(brutto,urlaub,position,monatlich) - this.familienBonus(kidsu18,kids18,monatlich) - this.pendler(km,isSmall);
   }
 
 
@@ -121,8 +118,6 @@ export class CalculationService {
       }
 
     }
-
-    console.log("Summe AFTER: " + summe);
 
     if(monatlich)
     {

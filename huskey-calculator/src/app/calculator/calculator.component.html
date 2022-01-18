@@ -23,6 +23,37 @@
         Salary required!
       </div>
     </div>
+    <div class="row">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="input-children">Kinder(unter 18)</span>
+        </div>
+        <input formControlName="children" name="children" type="number" min="0" class="form-control" aria-label="Sizing example input"
+               aria-describedby="input-children">
+      </div>
+      <div *ngIf="checkError('min', 'children') && form.get('children')?.touched" class="alert alert-danger">
+        Negative numbers not allowed!
+      </div>
+      <div *ngIf="checkError('required', 'children') && form.get('children')?.touched" class="alert alert-danger">
+        Input field can't be empty!
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="input-children18">Kinder(über 18)</span>
+        </div>
+        <input formControlName="children18" name="children18" type="number" min="0" class="form-control" aria-label="Sizing example input"
+               aria-describedby="input-children">
+      </div>
+      <div *ngIf="checkError('min', 'children18') && form.get('children18')?.touched" class="alert alert-danger">
+        Negative numbers not allowed!
+      </div>
+      <div *ngIf="checkError('required', 'children18') && form.get('children18')?.touched" class="alert alert-danger">
+        Input field can't be empty!
+      </div>
+    </div>
 
     <!-- <div class="row">
       <div class="col-md-6">Beitragsgruppe</div>
@@ -40,7 +71,7 @@
         </div>
       </div>
     </div>
-    -->
+
     <div class="row">
       <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -59,6 +90,7 @@
         </select>
       </div>
     </div>
+    -->
 
     <div class="row">
       <div class="input-group mb-3">
@@ -98,31 +130,19 @@
       <tbody>
       <tr>
         <th>Brutto</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td *ngFor="let data of tableArray[0]">{{data}}</td>
       </tr>
       <tr>
         <th>SV</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td *ngFor="let data of tableArray[1]">{{data}}</td>
       </tr>
       <tr>
         <th>Lst</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td *ngFor="let data of tableArray[2]">{{data}}</td>
       </tr>
       <tr>
         <th>Netto</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td *ngFor="let data of tableArray[3]">{{data}}</td>
       </tr>
       </tbody>
     </table>
